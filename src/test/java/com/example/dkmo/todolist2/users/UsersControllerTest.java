@@ -1,5 +1,6 @@
-package com.example.dkmo.todolist2.userstests;
+package com.example.dkmo.todolist2.users;
 import com.example.dkmo.todolist2.Todolist2Application;
+import jakarta.persistence.Column;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -15,7 +16,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(classes = Todolist2Application.class)
+@SpringBootTest(classes = Todolist2Application.class,properties = "test")
 @AutoConfigureMockMvc
 public class UsersControllerTest {
     @MockBean
@@ -23,9 +24,9 @@ public class UsersControllerTest {
     @Autowired
     public MockMvc mockMvc;
 
+    Users user = new Users();
 @Test
     public void showAllUsers()throws Exception {
-   var user = new Users();
    user.setName("danilo");
    user.setUsername("danilo92");
    when(usersRepository.findAll()).thenReturn(List.of(user));
@@ -36,7 +37,6 @@ public class UsersControllerTest {
     }
 @Test
     public void insertAUsersOnTheDatabase()throws Exception{
-    var user = new Users();
     user.setUsername("danilo97");
     user.setPassword("danilo92");
     user.setName("danilo");
@@ -53,4 +53,5 @@ public class UsersControllerTest {
 
 
 }
+
     }

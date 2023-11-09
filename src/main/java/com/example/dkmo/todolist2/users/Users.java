@@ -3,6 +3,7 @@ package com.example.dkmo.todolist2.users;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
