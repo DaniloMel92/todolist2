@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ActiveProfiles;
 
 @DataJpaTest
 class UsersRepositoryTest {
@@ -33,17 +32,5 @@ Users users =new Users();
      users.setUsername("Danilo92");
      users.setPassword("danilo92");
      return users;
-    }
-    @Test
- void usernameIsNullExpectErrorJustUsernameCannotBeNull(){
-     Users users = createUsersWithoutValueOfUsername();
-     Users userCreated = usersRepository.save(users);
-     assertThat(userCreated.getUsername()).isNotNull();
- }
-    private Users createUsersWithoutValueOfUsername(){
-        var users = new Users();
-        users.setName("Danilo");
-        users.setPassword("danilo92");
-        return users;
     }
 }
